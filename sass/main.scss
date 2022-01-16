@@ -1,0 +1,849 @@
+@import "./colors";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-padding-top: 104px;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.6rem;
+	background-color: $section1;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.section-padding {
+	padding: 7em 2em;
+}
+
+.section-title {
+	position: relative;
+	margin: 0 auto 1.4em;
+	font-size: 4.5rem;
+	color: $section4;
+	text-transform: uppercase;
+	font-weight: 200;
+	width: fit-content;
+	// z-index: -1;
+}
+
+.fa-tree {
+	color: #333;
+}
+
+//============================
+.btn-special-animation {
+	position: relative;
+	transition: background-color 0.3s;
+	overflow: hidden;
+	z-index: 0;
+
+	&::before {
+		display: block;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.3s;
+		z-index: -1;
+	}
+
+	&:hover::before {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+}
+//==========================================
+// NAV
+.nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 104px;
+	background-color: $section1;
+	z-index: 1000;
+
+	&__navbar {
+		position: absolute;
+		font-size: 3.5rem;
+		text-decoration: none;
+		color: black;
+		padding: 0.7em;
+		top: 3%;
+		left: 3%;
+		// z-index: 1000;
+	}
+	
+	&__burger {
+		position: absolute;
+		top: 3%;
+		right: 3%;
+		margin-top: 0.1em;
+		padding: 0.8em;
+		background: none;
+		border: none;
+		font-size: 3.5rem;
+		cursor: pointer;
+		overflow: hidden;
+		transition: color .3s, background-color .3s;
+		z-index: 1000;
+		
+		&:hover {
+			color: $section1;
+			background-color: $section4;
+		}
+	}
+	
+	&__desktop {
+		display: none;
+	}
+
+	&__mobile {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100vh;
+		top: 0%;
+		left: 0%;
+		transform: translateX(-102%);
+		transition: transform .3s;
+		background-color: $section3;
+		z-index: 10;
+		
+		&-link {
+			margin: 1.5em 0;
+			padding: 0.5em;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: $section1;
+			font-weight: 700;
+			border-radius: 8px;
+			font-size: 3rem;
+			cursor: pointer;
+			transition: color .3s, background-color .4s, transform .3s;
+			// z-index: 900;
+			
+			&:hover {
+				color: $section4;
+				background-color: $section1;
+				transform: scale(1.1);
+			}
+		}
+
+		&--active {
+			transform: translateX(0);
+		}
+	}
+
+	.active {
+		color: $section1;
+		background-color: $section4;
+	}
+	
+}
+// MAIN
+// BANNER
+.hero-banner {
+	position: relative;
+	padding: 10em 2em;
+	background-image: $black-gradient, url('../img/jungle-small.jpg');
+	background-position: bottom;
+	background-size: cover;
+	color: $section1;
+	overflow: hidden;
+
+	&__title {
+		font-size: 2rem;
+		font-weight: 400;
+		margin-bottom: 0.2em;
+		text-shadow: 0px 0px 10px $section4;
+		z-index: 1;
+	}
+
+	&__text {
+		font-size: 3rem;
+		font-weight: 700;
+	}
+
+}
+// ABOUT
+.about {
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;	
+	}
+
+	&__img {
+		width: 100%;
+		margin-bottom: 3em;
+	}
+
+	&__title {
+		margin-bottom: 0.5em;
+	}
+
+	&__text {
+		font-size: 1.4rem;
+	}
+}
+// SECOND HERO IMG
+.hero-img {
+	position: relative;
+	padding: 6em 2em;
+	background-color: rgba(0, 0, 0, 0.4);
+	background-image: $black-gradient, url('../img/girl-small.jpg');
+	background-size: cover;
+	background-position: center;
+
+	&__title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		padding: 1.5em 1.5em;
+		color: $section1;
+		font-size: 4rem;
+		font-weight: 500;
+		border: 1px solid $section1;
+		// z-index: 1;
+	}
+}
+// OFFERS
+.offers {
+	overflow: hidden;
+
+	.section-text {
+		position: relative;
+		margin: 0 auto;
+		width: fit-content;
+		font-size: 1.8rem;
+		margin-bottom: 3em;
+	}
+
+	&__box {
+		display: grid;
+		grid-template-columns: repeat(9, 1fr);
+		gap: 2em;
+	}
+
+	&__card {
+		position: relative;
+		display: grid;
+		justify-items: center;
+		padding: 1.5em 1.5em;
+		text-align: center;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		box-shadow: 0 0 8px $section3;
+		cursor: pointer;
+
+		&-title {
+			font-size: 3rem;
+			font-weight: 400;
+			margin-bottom: 0.4em;
+		}
+
+		&-price {
+			font-size: 4rem;
+			font-weight: 700;
+			margin-bottom: 0.5em;
+		}
+
+		&-ul {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			list-style: none;
+			font-weight: 500;
+		}
+
+		&-list {
+			margin-bottom: 0.3em;
+
+		}
+		
+		&-span {
+			color: $textSPAN;
+		}
+
+		&--one {
+			grid-row: 1/2;
+			grid-column: 1/-1;
+		}
+		
+		&--two {
+			grid-row: 2/3;
+			grid-column: 1/-1;
+		}
+		
+		&--three {
+			grid-row: 3/4;
+			grid-column: 1/-1;
+		}
+	}
+
+	&__btn {
+		margin-top: 1.4em;
+		padding: 0.6em 4.4em;
+		background-color: $section1;
+		border: none;
+		box-shadow: 3px 3px 8px $section3;
+		border-radius: 8px;
+		font-size: 1.7rem;
+		color: $section3;
+		cursor: pointer;
+		transition: background-color .3s, box-shadow .3s, color .3s;
+		
+		&:hover {
+			background-color: $colorOK;
+			box-shadow: 3px 3px 8px $colorOK;
+			color: $section4;
+		}
+
+		&--green {
+			margin-top: 1.4em;
+			padding: 0.6em 4.4em;
+			background-color: $colorOK;
+			border: none;
+			box-shadow: 3px 3px 8px $colorOK;
+			border-radius: 8px;
+			font-size: 1.7rem;
+			color: $section4;
+			cursor: pointer;
+			transition: background-color .3s, box-shadow .3s, color .3s;
+
+			&:hover {
+				background-color: $section1;
+				box-shadow: 3px 3px 8px $section3;
+				color: $section3;
+			}
+		}
+	}
+
+	&__individual-offer {
+		position: relative;
+		margin: 0 auto;
+		width: fit-content;
+		margin-top: 2em;
+		padding: 1em;
+		font-size: 1.8rem;
+
+		.custom-link {
+			position: relative;
+			color: $section4;
+			font-weight: 700;
+			text-decoration: none;
+			border-bottom: 2px solid $colorOK;
+			cursor: pointer;
+			z-index: 0;
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 0;
+				width: 100%;
+				background-color: $colorOK;
+				transition: color .3s, background-color .3s, height .3s;
+				z-index: -1;
+				
+			}
+			
+			&:hover {
+				color: $section1;
+
+				&::after {
+					height: 100%;
+				}
+			}
+			
+		}
+	}
+
+	.fas {
+		margin-right: 0.5em;
+	}
+
+	.fa-check {
+		color: $colorOK;
+	}
+}
+//CONTACT
+.contact {
+	background-color: $section2;
+	&__map {
+		position: relative;
+		margin-top: 2em;
+		overflow: hidden;
+
+		&-titlemcd {
+			margin-bottom: 0.5em;
+			text-align: center;
+			font-size: 2.6rem;
+			font-weight: 700;
+		}
+
+		&-mcd {
+			display: flex;
+			flex-direction: column;
+			margin: 0 auto;
+
+			&-mcdonald {
+				width: 100%;
+				min-height: 200px;
+				margin-bottom: 3em;
+				border: none;
+				box-shadow: 5px 5px 10px $textSPAN;
+				border-radius: 2px;
+			}
+
+			&-icon {
+				display: none;
+			}
+		}
+
+		.icon {
+			display: none;
+		}
+		
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+
+		&-box {
+			margin-bottom: 0.7em;
+		}
+		
+		&-label {
+			text-transform: uppercase;
+		}
+
+		&-input, &-textarea {
+			margin: 1em 0;
+			padding: 0.4em 1.2em;
+			border: 1px solid $textSPAN;
+			border-radius: 8px;
+			font-size: 1.6rem;
+			width: 100%;
+		}
+
+		&-textarea {
+			max-width: 100%;
+			min-width: 100%;
+			min-height: 150px;
+		}
+
+		&-btn {
+			align-self: flex-end;
+			width: 100%;
+			padding: 1em;
+			font-size: 1.4rem;
+			max-width: 300px;
+			color: $section1;
+			background-color: $section4;
+			border: none;
+			border-radius: 8px;
+			overflow: hidden;
+			cursor: pointer;
+			
+			&::before {
+				background-color: $colorOK;
+			}
+		}
+	}
+}
+// FOOTER
+.footer {
+	padding: 3em 2em ;
+	
+	&__box {
+		font-size: 5rem;
+		padding-bottom: 2em;
+		margin: 0 auto;
+		width: fit-content;
+
+		&-desktop {
+			display: none;
+		}
+	}
+
+	&__bottom-text {
+		padding: 2em;
+		text-align: center;
+	}
+}
+
+
+//=============================
+// ========= 576px ============
+@media (min-width: 576px) {
+	// ABOUT
+	.about {
+		&__title {
+			font-size: 1.8rem;
+		}
+
+		&__text {
+			font-size: 1.5rem;
+			line-height: 1.7em;
+		}
+
+	}
+}
+//=============================
+// ========= 768px ============
+@media (min-width: 768px) {
+	// ABOUT
+	.about {
+		&__box {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&-text {
+				width: 55%;
+				margin-left: 2em;
+			}
+		}
+
+		&__text {
+			line-height: 1.7em;
+		}
+
+		&__img {
+			margin-bottom: 0;
+			max-height: 300px;
+		}
+	}
+
+	// OFFERS
+	.offers {
+		.section-text {
+			font-size: 2.3rem;
+			margin-bottom: 3.2em;
+		}
+
+		&__card {
+			padding: 2em 0.2em;
+
+			&-title {
+				font-size: 2.5rem;
+			}
+
+			&-price {
+				font-size: 3.5rem;
+			}
+
+			&-list {
+				margin-bottom: 0.4em;
+				font-size: 1.3rem;
+			}
+
+			&--one {
+				grid-row: 1/2;
+				grid-column: 1/4;
+			}
+			
+			&--two {
+				grid-row: 1/2;
+				grid-column: 4/7;
+			}
+			
+			&--three {
+				grid-row: 1/2;
+				grid-column: 7/10;
+			}
+		}
+
+		&__btn {
+			padding: 0.6em 3.4em;
+			font-size: 1.5rem;
+			
+			&--green {
+				padding: 0.6em 3.4em;
+				font-size: 1.5rem;
+			}
+		}
+	}
+	//FOOTER
+	.footer {
+		padding: 5em 2em 2em;
+
+		&__boxes {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+		
+		&__box {
+			margin: 0 0.2em;
+			font-size: 3rem;
+	
+			&-desktop {
+				display: block;
+			}
+
+			&-title {
+				font-size: 1.8rem;
+				margin-bottom: 0.4em;
+			}
+			
+			&-list {
+				list-style: none;
+
+			}
+
+			&-list-item {
+				font-size: 1.4rem;
+				margin-bottom: 0.3em;
+
+				a {
+					color: $section4;
+					text-decoration: none;
+				}
+			}
+
+		}
+	}
+}
+//=============================
+// ========= 992px ============
+@media (min-width: 992px) {
+	// HEADER 
+	.hero-banner {
+		background-image: $black-gradient, url('../img/jungle-big.jpg');
+	
+			&__title {
+				font-size: 2.5rem;
+				margin-bottom: 0.3em;
+			}
+
+			&__text {
+				font-size: 3.7rem;
+			}
+	}
+
+	// NAV
+	.nav {
+		position: sticky;
+		
+		&__burger {
+			display: none;
+		}
+		
+		&__mobile {
+			display: none;
+		}
+		&__desktop {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			top: 0%;
+			right: 3%;
+			
+			&-link {
+				margin: 0 1em;
+				padding: 2em 1em;
+				text-decoration: none;
+				color: black;
+				font-weight: 400;
+				font-size: 2rem;
+				cursor: pointer;
+				transition: color .3s, background-color .4s;
+	
+				&:hover {
+					color: $section1;
+					background-color: $section4;
+				}
+			}
+	
+		}
+	
+	}
+
+	// ABOUT
+	.about {
+		&__box {
+			margin: 4em 0;
+		
+
+			&-text {
+				flex-direction: column;
+				justify-content: flex-end;
+				margin-bottom: 2.5em;
+			}
+		}
+
+		&__title {
+			font-size: 2.7rem;
+		}
+
+		&__text {
+			font-size: 1.7rem;
+		}
+	}
+
+	// HERO IMG
+	.hero-img {
+		padding: 7.4em 2em;
+		background-image: $black-gradient, url('../img/girl-big.jpg');
+
+		&__title {
+			font-size: 4.6rem;
+		}
+	}
+
+	// OFFERS
+	.offers {
+		.section-text {
+			font-size: 2.7rem;
+			margin-bottom: 2.8em;
+		}
+
+		&__card {
+			padding: 3em 0.7em;
+
+			&-title {
+				font-size: 3.2rem;
+			}
+
+			&-price {
+				font-size: 4.5rem;
+			}
+
+			&-list {
+				margin-bottom: 0.5em;
+				font-size: 1.8rem;
+			}
+		}
+
+		&__btn {
+			padding: 0.6em 4.5em;
+			font-size: 1.8rem;
+
+			&--green {			
+				padding: 0.6em 4.5em;
+				font-size: 1.8rem;
+			}
+		}
+
+		&__individual-offer {
+			font-size: 2.3rem;
+		}
+	}
+
+	//CONTACT
+	.contact {
+		&__map {
+			
+			&-titlemcd {
+				text-align: start;
+				margin-left: 18%;
+				font-size: 3rem;
+			}
+			
+			&-mcd {
+				flex-direction: row;
+				justify-content: space-between;
+
+				&-mcdonald {
+					width: 55%;
+				}
+
+				&-icon {
+					display: flex;
+					margin-bottom: 2em;
+					width: 35%;
+				}
+			}
+			
+		}
+
+		&__form {
+			&-label {
+				font-size: 1.8rem;
+			}
+		}
+	}
+	//FOOTER
+	.footer {
+		&__box {
+			&-company-name {
+				padding-left: 1em;
+				padding-right: 3em;
+				font-size: 5rem;
+			}
+
+			&-title {
+				font-size: 2.4rem;
+				margin-bottom: 1.1em;
+			}
+
+			&-list-item {
+				font-size: 1.5rem;
+				margin-bottom: 0.6em;
+			}
+		}
+	}
+}
+//=============================
+// ========= 1200px ============
+@media (min-width: 1200px) {
+	// ABOUT
+	.about {
+
+		&__title {
+			font-size: 2.9rem;
+		}
+
+		&__text {
+			font-size: 1.9rem;
+		}
+	}
+	//FOOTER
+	.footer {
+		&__box {
+			&-company-name {
+				font-size: 6rem;
+			}
+
+			&-title {
+				font-size: 2.5rem;
+			}
+
+			&-list-item {
+				font-size: 1.6rem;
+			}
+		}
+	}
+}
+
+//======================================================================
