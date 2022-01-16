@@ -636,20 +636,7 @@ body {
 //=============================
 // ========= 992px ============
 @media (min-width: 992px) {
-	// HEADER 
-	.hero-banner {
-		background-image: $black-gradient, url('../img/jungle-big.jpg');
 	
-			&__title {
-				font-size: 2.5rem;
-				margin-bottom: 0.3em;
-			}
-
-			&__text {
-				font-size: 3.7rem;
-			}
-	}
-
 	// NAV
 	.nav {
 		position: sticky;
@@ -678,15 +665,26 @@ body {
 				font-size: 2rem;
 				cursor: pointer;
 				transition: color .3s, background-color .4s;
-	
+				
 				&:hover {
 					color: $section1;
 					background-color: $section4;
 				}
 			}
-	
 		}
+	}
+	// IMG 1 
+	.hero-banner {
+		background-image: $black-gradient, url('../img/jungle-big.jpg');
 	
+			&__title {
+				font-size: 2.5rem;
+				margin-bottom: 0.3em;
+			}
+
+			&__text {
+				font-size: 3.7rem;
+			}
 	}
 
 	// ABOUT
@@ -711,7 +709,7 @@ body {
 		}
 	}
 
-	// HERO IMG
+	// IMG 2
 	.hero-img {
 		padding: 7.4em 2em;
 		background-image: $black-gradient, url('../img/girl-big.jpg');
