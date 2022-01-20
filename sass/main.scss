@@ -38,7 +38,6 @@ body {
 	text-transform: uppercase;
 	font-weight: 200;
 	width: fit-content;
-	// z-index: -1;
 }
 
 .fa-tree {
@@ -74,16 +73,22 @@ body {
 //==========================================
 // NAV
 .nav {
-	position: sticky;
+	position: fixed;
 	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	height: 104px;
+	width: 100%;
 	background-color: $section1;
+	border-bottom: 1px solid $textSPAN;
 	z-index: 1000;
-
+	
 	&__navbar {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 104px;
+	}
+
+	&__logo {
 		position: absolute;
 		font-size: 3.5rem;
 		text-decoration: none;
@@ -91,7 +96,6 @@ body {
 		padding: 0.7em;
 		top: 3%;
 		left: 3%;
-		// z-index: 1000;
 	}
 	
 	&__burger {
@@ -144,7 +148,6 @@ body {
 			font-size: 3rem;
 			cursor: pointer;
 			transition: color .3s, background-color .4s, transform .3s;
-			// z-index: 900;
 			
 			&:hover {
 				color: $section4;
@@ -178,8 +181,6 @@ body {
 	&__title {
 		font-size: 2rem;
 		font-weight: 400;
-		margin-bottom: 0.2em;
-		text-shadow: 0px 0px 10px $section4;
 		z-index: 1;
 	}
 
@@ -230,7 +231,6 @@ body {
 		font-size: 4rem;
 		font-weight: 500;
 		border: 1px solid $section1;
-		// z-index: 1;
 	}
 }
 // OFFERS
@@ -398,40 +398,79 @@ body {
 .contact {
 	background-color: $section2;
 	&__map {
-		position: relative;
+		display: flex;
+		flex-direction: column;
 		margin-top: 2em;
 		overflow: hidden;
+		
+		&-mcd {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&-mcdonald {
+			width: 100%;
+			height: 200px;
+			margin-bottom: 3em;
+			border: none;
+			box-shadow: 5px 5px 10px $textSPAN;
+			border-radius: 2px;
+		}
 
 		&-titlemcd {
-			margin-bottom: 0.5em;
+			margin-bottom: 1em;
 			text-align: center;
 			font-size: 2.6rem;
 			font-weight: 700;
 		}
 
-		&-mcd {
+		&-picture {
+			position: relative;
+			background-image: url('../img/icons/tabler-icon-mailbox.svg');
+			background-size:contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 300px;
+			margin-bottom: 2em;
+
+		}
+
+		&-info {
+			position: absolute;
 			display: flex;
 			flex-direction: column;
-			margin: 0 auto;
+			align-items: center;
+			width: 100%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 
-			&-mcdonald {
-				width: 100%;
-				min-height: 200px;
-				margin-bottom: 3em;
-				border: none;
-				box-shadow: 5px 5px 10px $textSPAN;
-				border-radius: 2px;
-			}
-
-			&-icon {
-				display: none;
-			}
-		}
-
-		.icon {
-			display: none;
 		}
 		
+		&-title {
+			font-size: 2.3rem;
+			margin-bottom: 0.5em;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+		&-company {
+			color: $colorOK;
+			font-size: 1.8rem;
+			font-weight: 500;
+			margin-bottom: 0.4em;
+		}
+		
+		.fas {
+			color: $colorOK;
+			font-size: 1.7rem;
+			margin-right: 0.3em;
+		}
+
+		p {
+			margin-bottom: 0.7em;
+		}
 	}
 
 	&__form {
@@ -485,13 +524,50 @@ body {
 	padding: 3em 2em ;
 	
 	&__box {
-		font-size: 5rem;
-		padding-bottom: 2em;
+		display: flex;
+		flex-direction: column;
+		font-size: 3.5rem;
+		padding-bottom: 1.5em;
 		margin: 0 auto;
 		width: fit-content;
 
-		&-desktop {
-			display: none;
+		&-aboutus {
+			align-items: center;
+		}
+		
+		&-company {
+			align-items: center;
+		}
+		
+		&-documents {
+			align-items: center;
+		}
+		
+		&-title {
+			font-size: 2.1rem;
+			margin-bottom: 0.5em;
+		}
+
+		&-list-item {
+			font-size: 1.4rem;
+			font-weight: 400;
+			margin-bottom: 0.4em;
+			list-style: none;
+			transition: transform .3s;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+
+			a {
+				color: $section4;
+				text-decoration: none;
+				transition: color .3s;
+
+				&:hover {
+					color: $colorOK;
+				}
+			}
 		}
 	}
 
@@ -592,6 +668,49 @@ body {
 			}
 		}
 	}
+
+	//CONTACT
+	.contact {
+		&__map {
+			flex-direction: row;
+			justify-content: space-between;
+			margin-bottom: 3em;
+			
+			&-mcd {
+				width: 45%;
+			}
+			
+			&-mcdonald {
+				height: 300px;
+			}
+
+			&-picture {
+				width: 50%;
+				height: auto;
+				margin-bottom: 0;
+			}
+			
+			&-title {
+				font-size: 2.5rem;
+				margin-bottom: 0.7em;
+			}
+
+			&-company {
+				font-size: 2.1rem;
+				margin-bottom: 0.5em;
+			}
+			
+			.fas {
+				font-size: 2rem;
+				margin-right: 0.4em;
+			}
+
+			&-address {
+				margin-bottom: 1em;
+			}
+		}
+	}
+
 	//FOOTER
 	.footer {
 		padding: 5em 2em 2em;
@@ -599,20 +718,26 @@ body {
 		&__boxes {
 			display: flex;
 			justify-content: space-between;
-			width: 100%;
+			flex-direction: row;
 		}
 		
 		&__box {
 			margin: 0 0.2em;
-			font-size: 3rem;
-	
-			&-desktop {
-				display: block;
+
+			&-aboutus {
+				margin: 0 1em 0 auto;
+			}
+			
+			&-company {
+				margin: 0 1em;
+			}
+			
+			&-docuemnts {
+				margin: 0 1em;
 			}
 
 			&-title {
-				font-size: 1.8rem;
-				margin-bottom: 0.4em;
+				font-size: 2.1rem;
 			}
 			
 			&-list {
@@ -621,7 +746,7 @@ body {
 			}
 
 			&-list-item {
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 				margin-bottom: 0.3em;
 
 				a {
@@ -629,7 +754,6 @@ body {
 					text-decoration: none;
 				}
 			}
-
 		}
 	}
 }
@@ -639,22 +763,31 @@ body {
 	
 	// NAV
 	.nav {
-		position: sticky;
-		
 		&__burger {
 			display: none;
+		}
+
+		&__logo {
+			left: 0%;
 		}
 		
 		&__mobile {
 			display: none;
 		}
+
 		&__desktop {
-			position: absolute;
+			position: static;
 			display: flex;
 			flex-direction: row;
-			justify-content: flex-end;
-			top: 0%;
-			right: 3%;
+			justify-content: space-between;
+			height: 104px;
+			max-width: 1200px;
+			margin: 0 auto;
+			margin-right: 0em;
+			width: auto;
+			background: none;
+			overflow: hidden;
+			opacity: 1;
 			
 			&-link {
 				margin: 0 1em;
@@ -761,28 +894,28 @@ body {
 	//CONTACT
 	.contact {
 		&__map {
+			margin-bottom: 1em;
 			
 			&-titlemcd {
-				text-align: start;
-				margin-left: 18%;
-				font-size: 3rem;
+				font-size: 2.7rem;
 			}
 			
-			&-mcd {
-				flex-direction: row;
-				justify-content: space-between;
+			&-title {
+				font-size: 2.7rem;
+			}
 
-				&-mcdonald {
-					width: 55%;
-				}
-
-				&-icon {
-					display: flex;
-					margin-bottom: 2em;
-					width: 35%;
-				}
+			&-company {
+				font-size: 2.4rem;
 			}
 			
+			.fas {
+				font-size: 2.4rem;
+			}
+
+			&-address {
+				font-size: 1.8rem;
+				margin-bottom: 1.2em;
+			}
 		}
 
 		&__form {
@@ -796,13 +929,12 @@ body {
 		&__box {
 			&-company-name {
 				padding-left: 1em;
-				padding-right: 3em;
 				font-size: 5rem;
 			}
 
 			&-title {
-				font-size: 2.4rem;
-				margin-bottom: 1.1em;
+				font-size: 2.3rem;
+				margin-bottom: 0.8em;
 			}
 
 			&-list-item {
@@ -834,7 +966,7 @@ body {
 			}
 
 			&-title {
-				font-size: 2.5rem;
+				font-size: 2.4rem;
 			}
 
 			&-list-item {

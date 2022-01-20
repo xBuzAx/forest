@@ -80,18 +80,29 @@ body {
 }
 
 .nav {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 104px;
+  width: 100%;
   background-color: white;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.333);
   z-index: 1000;
 }
 
 .nav__navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 104px;
+}
+
+.nav__logo {
   position: absolute;
   font-size: 3.5rem;
   text-decoration: none;
@@ -201,8 +212,6 @@ body {
 .hero-banner__title {
   font-size: 2rem;
   font-weight: 400;
-  margin-bottom: 0.2em;
-  text-shadow: 0px 0px 10px black;
   z-index: 1;
 }
 
@@ -457,16 +466,15 @@ body {
 }
 
 .contact__map {
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: 2em;
   overflow: hidden;
-}
-
-.contact__map-titlemcd {
-  margin-bottom: 0.5em;
-  text-align: center;
-  font-size: 2.6rem;
-  font-weight: 700;
 }
 
 .contact__map-mcd {
@@ -477,12 +485,14 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.contact__map-mcd-mcdonald {
+.contact__map-mcdonald {
   width: 100%;
-  min-height: 200px;
+  height: 200px;
   margin-bottom: 3em;
   border: none;
   -webkit-box-shadow: 5px 5px 10px rgba(84, 84, 84, 0.333);
@@ -490,12 +500,64 @@ body {
   border-radius: 2px;
 }
 
-.contact__map-mcd-icon {
-  display: none;
+.contact__map-titlemcd {
+  margin-bottom: 1em;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
 }
 
-.contact__map .icon {
-  display: none;
+.contact__map-picture {
+  position: relative;
+  background-image: url("../img/icons/tabler-icon-mailbox.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  margin-bottom: 2em;
+}
+
+.contact__map-info {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.contact__map-title {
+  font-size: 2.3rem;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.contact__map-company {
+  color: #0ab64c;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4em;
+}
+
+.contact__map .fas {
+  color: #0ab64c;
+  font-size: 1.7rem;
+  margin-right: 0.3em;
+}
+
+.contact__map p {
+  margin-bottom: 0.7em;
 }
 
 .contact__form {
@@ -555,16 +617,69 @@ body {
 }
 
 .footer__box {
-  font-size: 5rem;
-  padding-bottom: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 3.5rem;
+  padding-bottom: 1.5em;
   margin: 0 auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.footer__box-desktop {
-  display: none;
+.footer__box-aboutus {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__box-company {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__box-documents {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__box-title {
+  font-size: 2.1rem;
+  margin-bottom: 0.5em;
+}
+
+.footer__box-list-item {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.4em;
+  list-style: none;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.footer__box-list-item:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.footer__box-list-item a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+.footer__box-list-item a:hover {
+  color: #0ab64c;
 }
 
 .footer__bottom-text {
@@ -652,6 +767,42 @@ body {
     padding: 0.6em 3.4em;
     font-size: 1.5rem;
   }
+  .contact__map {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 3em;
+  }
+  .contact__map-mcd {
+    width: 45%;
+  }
+  .contact__map-mcdonald {
+    height: 300px;
+  }
+  .contact__map-picture {
+    width: 50%;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .contact__map-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.7em;
+  }
+  .contact__map-company {
+    font-size: 2.1rem;
+    margin-bottom: 0.5em;
+  }
+  .contact__map .fas {
+    font-size: 2rem;
+    margin-right: 0.4em;
+  }
+  .contact__map-address {
+    margin-bottom: 1em;
+  }
   .footer {
     padding: 5em 2em 2em;
   }
@@ -662,24 +813,31 @@ body {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   .footer__box {
     margin: 0 0.2em;
-    font-size: 3rem;
   }
-  .footer__box-desktop {
-    display: block;
+  .footer__box-aboutus {
+    margin: 0 1em 0 auto;
+  }
+  .footer__box-company {
+    margin: 0 1em;
+  }
+  .footer__box-docuemnts {
+    margin: 0 1em;
   }
   .footer__box-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.4em;
+    font-size: 2.1rem;
   }
   .footer__box-list {
     list-style: none;
   }
   .footer__box-list-item {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-bottom: 0.3em;
   }
   .footer__box-list-item a {
@@ -689,28 +847,17 @@ body {
 }
 
 @media (min-width: 992px) {
-  .hero-banner {
-    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(1, 43, 10, 0.5)), url("../img/jungle-big.jpg");
-  }
-  .hero-banner__title {
-    font-size: 2.5rem;
-    margin-bottom: 0.3em;
-  }
-  .hero-banner__text {
-    font-size: 3.7rem;
-  }
-  .nav {
-    position: -webkit-sticky;
-    position: sticky;
-  }
   .nav__burger {
     display: none;
+  }
+  .nav__logo {
+    left: 0%;
   }
   .nav__mobile {
     display: none;
   }
   .nav__desktop {
-    position: absolute;
+    position: static;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -718,11 +865,17 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    top: 0%;
-    right: 3%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 104px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-right: 0em;
+    width: auto;
+    background: none;
+    overflow: hidden;
+    opacity: 1;
   }
   .nav__desktop-link {
     margin: 0 1em;
@@ -738,6 +891,16 @@ body {
   .nav__desktop-link:hover {
     color: white;
     background-color: black;
+  }
+  .hero-banner {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(1, 43, 10, 0.5)), url("../img/jungle-big.jpg");
+  }
+  .hero-banner__title {
+    font-size: 2.5rem;
+    margin-bottom: 0.3em;
+  }
+  .hero-banner__text {
+    font-size: 3.7rem;
   }
   .about__box {
     margin: 4em 0;
@@ -793,41 +956,35 @@ body {
   .offers__individual-offer {
     font-size: 2.3rem;
   }
+  .contact__map {
+    margin-bottom: 1em;
+  }
   .contact__map-titlemcd {
-    text-align: start;
-    margin-left: 18%;
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
-  .contact__map-mcd {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+  .contact__map-title {
+    font-size: 2.7rem;
   }
-  .contact__map-mcd-mcdonald {
-    width: 55%;
+  .contact__map-company {
+    font-size: 2.4rem;
   }
-  .contact__map-mcd-icon {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 2em;
-    width: 35%;
+  .contact__map .fas {
+    font-size: 2.4rem;
+  }
+  .contact__map-address {
+    font-size: 1.8rem;
+    margin-bottom: 1.2em;
   }
   .contact__form-label {
     font-size: 1.8rem;
   }
   .footer__box-company-name {
     padding-left: 1em;
-    padding-right: 3em;
     font-size: 5rem;
   }
   .footer__box-title {
-    font-size: 2.4rem;
-    margin-bottom: 1.1em;
+    font-size: 2.3rem;
+    margin-bottom: 0.8em;
   }
   .footer__box-list-item {
     font-size: 1.5rem;
@@ -846,7 +1003,7 @@ body {
     font-size: 6rem;
   }
   .footer__box-title {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   .footer__box-list-item {
     font-size: 1.6rem;
